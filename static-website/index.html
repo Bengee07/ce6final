@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rare Strawberry Fruit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('images/strawberrybg.jpg'); /* Replace with your image URL */
+        	background-size: cover; /* Cover the entire viewport */
+        	background-repeat: no-repeat; /* Prevent the image from repeating */
+        	background-position: center; /* Center the image */
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+			background-color: rgba(255, 255, 255, 0.7); /* White background with 70% opacity */
+    		padding: 10px;
+    		border-radius: 5px; /* Optional: Add rounded corners */
+            color: #e63946;
+        }
+        .product {
+            margin: 20px 0;
+        }
+        .product img {
+            width: 300px;
+            height: auto;
+        }
+        .order-form {
+            margin-top: 20px;
+        }
+        input[type="email"] {
+            padding: 10px;
+            width: 250px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #e63946;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #d62839;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Rare Strawberry Fruit</h1>
+    <div class="product">
+        <img src="images/strawberry.jpeg" alt="Rare Strawberry Fruit">
+        <p>Experience the unique taste of our rare strawberry fruit. Limited stock available!</p>
+        <p>Price: $19.99</p>
+    </div>
+
+    <div class="order-form">
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button id="orderButton">Order Now</button>
+    </div>
+
+    <script>
+        document.getElementById('orderButton').addEventListener('click', function() {
+            const email = document.getElementById('email').value;
+
+            if (!email) {
+                alert('Please enter your email address.');
+                return;
+            }
+
+            // Replace with your AWS API Gateway endpoint
+            const apiUrl = 'https://your-api-id.execute-api.region.amazonaws.com/your-stage/your-resource';
+
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: email })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Order placed successfully!');
+                } else {
+                    alert('Failed to place order. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    </script>
+
+</body>
+</html>
