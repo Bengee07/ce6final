@@ -1,11 +1,6 @@
 variable "env" {
   type    = string
-  default = ""
-}
-
-variable "acm_certificate_arn" {
-  type        = string
-  description = "ACM cert ARN"
+  default = "ce6final"
 }
 
 variable "aliases" {
@@ -14,7 +9,13 @@ variable "aliases" {
   default     = []
 }
 
-variable "web_acl_id" {
+# variables.tf
+variable "acm_certificate_arn" {
+  description = "ACM certificate ARN"
   type        = string
-  description = "Web ACL arn of WAF"
+}
+
+variable "web_acl_id" {
+  description = "Web ACL ARN of WAF"
+  type        = string
 }

@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+          "Effect": "Allow",
+          "Action": [
+              "${var1}"
+          ],
+          "Resource": "${var2}"
+      },
+      {
+          "Effect": "Allow",
+          "Action": [
+              "dynamodb:PutItem"
+          ],
+          "Resource": "arn:aws:dynamodb:*:*:table/PRODUCT"
+      }
+    ]
+}
